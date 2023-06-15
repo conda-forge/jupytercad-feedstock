@@ -1,5 +1,5 @@
 {% set name = "jupytercad" %}
-{% set version = "0.3.1" %}
+{% set version = "0.3.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 29a03eda395ab2130dcd4dcd69dd1eee63e70c8e3679bbdd2d754882b621101f
+  sha256: dca014254c2beb4feca7714de921db68977166e3b25106c2745088ea73fba894
 
 build:
   noarch: python
@@ -55,7 +55,7 @@ test:
 
 about:
   home: https://github.com/QuantStack/jupytercad
-  summary: 'A JupyterLab extension for 3D geometry modeling'
+  summary: A JupyterLab extension for 3D geometry modeling
   description: |
     JupyterCAD is a JupyterLab extension for 3D geometry modeling with collaborative editing support. It is designed to allow multiple people to work on the same file at the same time, and to facilitate discussion and collaboration around the 3D shapes being created.
     JupyterCAD has support for FreeCAD files, which makes it easy to import and export models from FreeCAD. It also has a range of features for creating and manipulating 3D shapes, including a variety of primitives, transformations, and Boolean operations.
