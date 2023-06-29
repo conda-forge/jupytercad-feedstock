@@ -1,5 +1,5 @@
 {% set name = "jupytercad" %}
-{% set version = "0.3.2" %}
+{% set version = "0.3.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: dca014254c2beb4feca7714de921db68977166e3b25106c2745088ea73fba894
+  sha256: 2dd55491d06e988b910cb5433d4c4c7080c8a9e8e2778aa4d7e86db6ae19c63f
 
 build:
   noarch: python
