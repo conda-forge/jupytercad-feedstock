@@ -161,7 +161,7 @@ about:
     JupyterCAD has support for FreeCAD files, which makes it easy to import and export models from FreeCAD. It also has a range of features for creating and manipulating 3D shapes, including a variety of primitives, transformations, and Boolean operations.
   license: BSD-3-Clause
   license_family: BSD
-  license_file: LICENSE
+  license_file: jupytercad/LICENSE
   doc_url: https://jupytercad.readthedocs.io/en/latest
   dev_url: https://github.com/QuantStack/jupytercad
 
