@@ -15,32 +15,6 @@ build:
 
 
 outputs:
-  - name: jupytercad
-    version: {{ version }}
-    build:
-      script: |
-        cd python/jupytercad
-        python -m pip install . -vv --no-deps
-    requirements:
-      host:
-        - python >=3.8
-        - hatchling
-        - pip
-      run:
-        - python >=3.8
-        - jupytercad_core
-        - jupytercad_lab
-        - jupytercad_app
-      run_constrained:
-        - jupytercad_core =={{ version }}
-        - jupytercad_lab =={{ version }}
-        - jupytercad_app =={{ version }}
-    test:
-      commands:
-        - pip check
-      requires:
-        - pip
-
   - name: jupytercad_core
     version: {{ version }}
     build:
@@ -136,6 +110,32 @@ outputs:
         - pip check
         - test -f ${PREFIX}/share/jupyter/labextensions/@jupytercad/jupytercad-app/package.json                            # [unix]
         - if not exist %PREFIX%\\share\\jupyter\\appextensions\\@jupytercad/jupytercad-lab\\package.json (exit 1)          # [win]
+      requires:
+        - pip
+
+  - name: jupytercad
+    version: {{ version }}
+    build:
+      script: |
+        cd python/jupytercad
+        python -m pip install . -vv --no-deps
+    requirements:
+      host:
+        - python >=3.8
+        - hatchling
+        - pip
+      run:
+        - python >=3.8
+        - jupytercad_core
+        - jupytercad_lab
+        - jupytercad_app
+      run_constrained:
+        - jupytercad_core =={{ version }}
+        - jupytercad_lab =={{ version }}
+        - jupytercad_app =={{ version }}
+    test:
+      commands:
+        - pip check
       requires:
         - pip
 
