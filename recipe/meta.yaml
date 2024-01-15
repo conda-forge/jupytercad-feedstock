@@ -53,6 +53,7 @@ outputs:
       host:
         - python >=3.8
         - hatchling
+        - yarn
         - jupyterlab >=4,<5
         - hatch-nodejs-version >=0.3.2
         - pip
