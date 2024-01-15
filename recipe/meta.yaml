@@ -11,45 +11,129 @@ source:
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
   number: 0
-  entry_points:
-    - jupyter-cad = jupytercad.cadapp:main
 
-requirements:
-  host:
-    - python >=3.7
-    - pip
-    - hatchling >=1.4.0
-    - hatch-nodejs-version
-    - hatch-jupyter-builder
-    - datamodel-code-generator
-    - jupyterlab >=4,<5
-  run:
-    - python >=3.7
-    - jupyter_server >=2.0.6
-    - jupyterlab >=4,<5
-    - jupyter-collaboration >=1.0.0,<2
-    - ypywidgets >=0.4.1,<0.5.0
-    - yjs-widgets >=0.3.4,<0.4
-    - comm >=0.1.2,<0.2.0
-    - pydantic
 
-test:
-  imports:
-    - jupytercad
-  requires:
-    - pip
-  commands:
-    - jupyter cad --version
-    # jupyter_server server extension
-    - jupyter server extension list  # [unix]
-    - jupyter server extension list 1>server_extensions 2>&1  # [unix]
-    - cat server_extensions | grep "jupytercad.*OK"  # [unix]
-    # labextensions
-    - jupyter labextension list  # [unix]
-    - jupyter labextension list 1>labextensions 2>&1  # [unix]
-    - cat labextensions | grep "@jupytercad/jupytercad-extension.*OK"  # [unix]
+outputs:
+  - name: jupytercad
+    version: {{ version }}
+    build:
+      script: |
+        {{ PYTHON }} -m pip install python/jupytercad -vv --no-deps
+    requirements:
+      host:
+        - python >=3.8
+        - hatchling
+        - pip
+      run:
+        - python >=3.8
+        - jupytercad_core
+        - jupytercad_lab
+        - jupytercad_app
+      run_constrained:
+        - jupytercad_core =={{ version }}
+        - jupytercad_lab =={{ version }}
+        - jupytercad_app =={{ version }}
+    test:
+      commands:
+        - pip check
+      requires:
+        - pip
+
+  - name: jupytercad_core
+    version: {{ version }}
+    build:
+      script: |
+        {{ PYTHON }} -m pip install python/jupytercad_core -vv --no-deps
+    requirements:
+      host:
+        - python >=3.8
+        - hatchling
+        - pip
+      run:
+        - python >=3.8
+        - jupyter_server >=2.0.6,<3
+        - jupyter_ydoc >=1.1,<2
+        - y-py >=0.6,<0.7
+        - jupyter-collaboration >=1.2,<2
+    test:
+      imports:
+        - jupytercad_code.jcad_ydoc.YJCad
+        - jupytercad_code.step_ydoc.YSTEP
+      commands:
+        - pip check
+        - test -f ${PREFIX}/share/jupyter/labextensions/@jupytercad/jupytercad-core/package.json                            # [unix]
+        - if not exist %PREFIX%\\share\\jupyter\\labextensions\\@jupytercad/jupytercad-core\\package.json (exit 1)          # [win]
+      requires:
+        - pip
+
+  - name: jupytercad_lab
+    version: {{ version }}
+    build:
+      script: |
+        {{ PYTHON }} -m pip install python/jupytercad_lab -vv --no-deps
+    requirements:
+      host:
+        - python >=3.8
+        - hatchling
+        - jupyterlab >=4,<5
+        - hatch-nodejs-version >=0.3.2
+        - pip
+      run:
+        - python >=3.8
+        - jupyter_server> =2.0.1,<3
+        - jupyter_ydoc >=1.1,<2
+        - y-py >=0.6,<0.7
+        - jupyter_collaboration >=1,<2
+        - ypywidgets >=0.4.1,<0.5
+        - yjs-widgets >=0.3.4,<0.4
+        - comm >=0.1.2,<0.2
+        - pydantic >=2,<3
+        - jupytercad_core
+      run_constrained:
+        - jupyterlab >=4,<5
+        - jupytercad_core =={{ version }}
+    test:
+      imports:
+        - jupytercad_lab.notebook.cad_document
+      commands:
+        - pip check
+        - test -f ${PREFIX}/share/jupyter/labextensions/@jupytercad/jupytercad-lab/package.json                            # [unix]
+        - if not exist %PREFIX%\\share\\jupyter\\labextensions\\@jupytercad/jupytercad-lab\\package.json (exit 1)          # [win]
+      requires:
+        - pip
+
+  - name: jupytercad_app
+    version: {{ version }}
+    build:
+      script: |
+        {{ PYTHON }} -m pip install python/jupytercad_app -vv --no-deps
+    entry_points:
+      - jupyter-cad = jupytercad_app.cadapp:main
+    requirements:
+      host:
+        - python >=3.8
+        - hatchling
+        - pip
+      run:
+        - python >=3.8
+        - jupyter_server >=2.0.1,<3
+        - jupytercad_core
+        - jupytercad_lab
+      run_constrained:
+        - jupyterlab >=4,<5
+        - jupytercad_lab =={{ version }}
+        - jupytercad_core =={{ version }}
+    test:
+      imports:
+        - jupytercad_app.cadapp.main
+      commands:
+        - jupyter cad --version
+        - pip check
+        - test -f ${PREFIX}/share/jupyter/labextensions/@jupytercad/jupytercad-app/package.json                            # [unix]
+        - if not exist %PREFIX%\\share\\jupyter\\appextensions\\@jupytercad/jupytercad-lab\\package.json (exit 1)          # [win]
+      requires:
+        - pip
 
 about:
   home: https://github.com/QuantStack/jupytercad
