@@ -6,8 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 4938583bde5a304569970301a04af11c6221d5364543a38ffde4329307a45e66
+  url: https://github.com/jupytercad/jupytercad/archive/v{{ version }}.tar.gz
+  sha256: 3a029481b2372f3469f7d7063b4fa127f3ee05b05330afa538a2d8792b620ae6
 
 build:
   noarch: python
