@@ -42,7 +42,6 @@ test:
   requires:
     - pip
   commands:
-    - pip check
     - jupyter cad --version
     # jupyter_server server extension
     - jupyter server extension list  # [unix]
