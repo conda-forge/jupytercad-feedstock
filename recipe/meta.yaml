@@ -6,8 +6,18 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/jupytercad/jupytercad/archive/v{{ version }}.tar.gz
-  sha256: 3a029481b2372f3469f7d7063b4fa127f3ee05b05330afa538a2d8792b620ae6
+  - url: https://pypi.io/packages/source/j/jupytercad_core/jupytercad_core-{{ version }}.tar.gz
+    sha256: d8fa5b4bebfbecae7f9e16e01ff39ae07324516ed1cad6357c357cabfc570d02
+    folder: jupytercad_core
+  - url: https://pypi.io/packages/source/j/jupytercad_lab/jupytercad_lab-{{ version }}.tar.gz
+    sha256: 385882a2ade248dbcd79fe870d90f90cf0d3e3d75761446ff44f528999323612
+    folder: jupytercad_lab
+  - url: https://pypi.io/packages/source/j/jupytercad_app/jupytercad_app-{{ version }}.tar.gz
+    sha256: bfc98439ad4474f6f2c6100df5f9bd03a0af858adfd79538b55dde40152b163b
+    folder: jupytercad_app
+  - url: https://pypi.io/packages/source/j/jupytercad/jupytercad-{{ version }}.tar.gz
+    sha256: 4938583bde5a304569970301a04af11c6221d5364543a38ffde4329307a45e66
+    folder: jupytercad
 
 build:
   noarch: python
@@ -19,7 +29,7 @@ outputs:
     version: {{ version }}
     build:
       script: |
-        cd python/jupytercad_core
+        cd jupytercad_core
         python -m pip install . -vv --no-deps
     requirements:
       host:
@@ -50,7 +60,7 @@ outputs:
     version: {{ version }}
     build:
       script: |
-        cd python/jupytercad_lab
+        cd jupytercad_lab
         python -m pip install . -vv --no-deps
     requirements:
       host:
@@ -88,7 +98,7 @@ outputs:
     version: {{ version }}
     build:
       script: |
-        cd python/jupytercad_app
+        cd jupytercad_app
         python -m pip install . -vv --no-deps
     entry_points:
       - jupyter-cad = jupytercad_app.cadapp:main
@@ -121,7 +131,7 @@ outputs:
     version: {{ version }}
     build:
       script: |
-        cd python/jupytercad
+        cd jupytercad
         python -m pip install . -vv --no-deps
     requirements:
       host:
