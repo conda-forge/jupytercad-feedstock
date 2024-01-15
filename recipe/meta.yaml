@@ -19,7 +19,7 @@ outputs:
     version: {{ version }}
     build:
       script: |
-        {{ PYTHON }} -m pip install python/jupytercad -vv --no-deps
+        python -m pip install python/jupytercad -vv --no-deps
     requirements:
       host:
         - python >=3.8
@@ -44,7 +44,7 @@ outputs:
     version: {{ version }}
     build:
       script: |
-        {{ PYTHON }} -m pip install python/jupytercad_core -vv --no-deps
+        python -m pip install python/jupytercad_core -vv --no-deps
     requirements:
       host:
         - python >=3.8
@@ -71,7 +71,7 @@ outputs:
     version: {{ version }}
     build:
       script: |
-        {{ PYTHON }} -m pip install python/jupytercad_lab -vv --no-deps
+        python -m pip install python/jupytercad_lab -vv --no-deps
     requirements:
       host:
         - python >=3.8
@@ -107,7 +107,7 @@ outputs:
     version: {{ version }}
     build:
       script: |
-        {{ PYTHON }} -m pip install python/jupytercad_app -vv --no-deps
+        python -m pip install python/jupytercad_app -vv --no-deps
     entry_points:
       - jupyter-cad = jupytercad_app.cadapp:main
     requirements:
