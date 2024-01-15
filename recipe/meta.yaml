@@ -47,8 +47,7 @@ outputs:
         - jupyter-collaboration >=1.2,<2
     test:
       imports:
-        - jupytercad_core.jcad_ydoc.YJCad
-        - jupytercad_core.step_ydoc.YSTEP
+        - jupytercad_core
       commands:
         - pip check
         - test -f ${PREFIX}/share/jupyter/labextensions/@jupytercad/jupytercad-core/package.json                            # [unix]
