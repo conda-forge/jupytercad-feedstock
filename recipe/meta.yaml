@@ -84,8 +84,8 @@ outputs:
         - comm >=0.1.2,<0.2
         - pydantic >=2,<3
         - jupytercad_core
-      run_constrained:
         - jupyterlab >=4,<5
+      run_constrained:
         - jupytercad_core ={{ version }}
     test:
       imports:
