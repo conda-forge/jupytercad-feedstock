@@ -31,7 +31,7 @@ outputs:
       noarch: python
       script: |
         cd jupytercad_core
-        python -m pip install . -vv --no-deps --no-build-isolation
+        python -m pip install . -vv --no-deps --no-build-isolation --ignore-installed --no-index
     requirements:
       host:
         - pip
@@ -63,7 +63,7 @@ outputs:
       noarch: python
       script: |
         cd jupytercad_lab
-        python -m pip install . -vv --no-deps --no-build-isolation
+        python -m pip install . -vv --no-deps --no-build-isolation --ignore-installed --no-index
     requirements:
       host:
         - pip
@@ -103,7 +103,7 @@ outputs:
       noarch: python
       script: |
         cd jupytercad_app
-        python -m pip install . -vv --no-deps --no-build-isolation
+        python -m pip install . -vv --no-deps --no-build-isolation --ignore-installed --no-index
       entry_points:
         - jupyter-cad = jupytercad_app.cadapp:main
     requirements:
@@ -139,7 +139,7 @@ outputs:
       noarch: python
       script: |
         cd jupytercad
-        python -m pip install . -vv --no-deps --no-build-isolation
+        python -m pip install . -vv --no-deps --no-build-isolation --ignore-installed --no-index
     requirements:
       host:
         - pip
