@@ -84,7 +84,7 @@ outputs:
         - jupytercad_core
       run_constrained:
         - jupyterlab >=4,<5
-        - jupytercad_core =={{ version }}
+        - jupytercad_core ={{ version }}
     test:
       imports:
         - jupytercad_lab.notebook.cad_document
@@ -119,8 +119,8 @@ outputs:
         - jupytercad_lab
       run_constrained:
         - jupyterlab >=4,<5
-        - jupytercad_lab =={{ version }}
-        - jupytercad_core =={{ version }}
+        - jupytercad_lab ={{ version }}
+        - jupytercad_core ={{ version }}
     test:
       imports:
         - jupytercad_app.cadapp.main
@@ -149,9 +149,9 @@ outputs:
         - jupytercad_lab
         - jupytercad_app
       run_constrained:
-        - jupytercad_core =={{ version }}
-        - jupytercad_lab =={{ version }}
-        - jupytercad_app =={{ version }}
+        - jupytercad_core ={{ version }}
+        - jupytercad_lab ={{ version }}
+        - jupytercad_app ={{ version }}
     test:
       imports:
         - jupytercad
