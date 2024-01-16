@@ -126,7 +126,7 @@ outputs:
         - jupytercad_core ={{ version }}
     test:
       imports:
-        - jupytercad_app.cadapp.main
+        - jupytercad_app.cadapp
       commands:
         - jupyter cad --version
         - pip check
