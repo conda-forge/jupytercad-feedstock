@@ -41,7 +41,7 @@ outputs:
         - hatch-jupyter-builder
         - hatch-nodejs-version >=0.3.2
       run:
-        - python >=3.8
+        - python >=3
         - jupyter_server >=2.0.6,<3
         - jupyter_ydoc >=1.1,<2
         - y-py >=0.6,<0.7
@@ -140,9 +140,9 @@ outputs:
         python -m pip install . -vv --no-deps --no-build-isolation
     requirements:
       host:
+        - pip
         - python >=3.8
         - hatchling
-        - pip
       run:
         - python >=3.8
         - jupytercad_core
@@ -153,13 +153,15 @@ outputs:
         - jupytercad_lab =={{ version }}
         - jupytercad_app =={{ version }}
     test:
+      imports:
+        - jupytercad
       commands:
         - pip check
       requires:
         - pip
 
 about:
-  home: https://github.com/QuantStack/jupytercad
+  home: https://github.com/jupytercad/jupytercad
   summary: A JupyterLab extension for 3D geometry modeling
   description: |
     JupyterCAD is a JupyterLab extension for 3D geometry modeling with collaborative editing support. It is designed to allow multiple people to work on the same file at the same time, and to facilitate discussion and collaboration around the 3D shapes being created.
@@ -168,7 +170,7 @@ about:
   license_family: BSD
   license_file: jupytercad/LICENSE
   doc_url: https://jupytercad.readthedocs.io/en/latest
-  dev_url: https://github.com/QuantStack/jupytercad
+  dev_url: https://github.com/jupytercad/jupytercad
 
 extra:
   recipe-maintainers:
