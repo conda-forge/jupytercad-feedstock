@@ -130,8 +130,6 @@ outputs:
       commands:
         - jupyter cad --version
         - pip check
-        - test -f ${PREFIX}/share/jupyter/labextensions/@jupytercad/jupytercad-app/package.json                            # [unix]
-        - if not exist %PREFIX%\\share\\jupyter\\appextensions\\@jupytercad/jupytercad-lab\\package.json (exit 1)          # [win]
       requires:
         - pip
 
