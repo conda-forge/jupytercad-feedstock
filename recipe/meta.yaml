@@ -101,8 +101,8 @@ outputs:
       script: |
         cd jupytercad_app
         python -m pip install . -vv --no-deps --no-build-isolation
-    entry_points:
-      - jupyter-cad = jupytercad_app.cadapp:main
+      entry_points:
+        - jupyter-cad = jupytercad_app.cadapp:main
     requirements:
       host:
         - pip
