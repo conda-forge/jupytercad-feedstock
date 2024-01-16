@@ -28,6 +28,7 @@ outputs:
   - name: jupytercad_core
     version: {{ version }}
     build:
+      noarch: python
       script: |
         cd jupytercad_core
         python -m pip install . -vv --no-deps --no-build-isolation
@@ -59,6 +60,7 @@ outputs:
   - name: jupytercad_lab
     version: {{ version }}
     build:
+      noarch: python
       script: |
         cd jupytercad_lab
         python -m pip install . -vv --no-deps --no-build-isolation
@@ -98,6 +100,7 @@ outputs:
   - name: jupytercad_app
     version: {{ version }}
     build:
+      noarch: python
       script: |
         cd jupytercad_app
         python -m pip install . -vv --no-deps --no-build-isolation
@@ -135,6 +138,7 @@ outputs:
   - name: jupytercad
     version: {{ version }}
     build:
+      noarch: python
       script: |
         cd jupytercad
         python -m pip install . -vv --no-deps --no-build-isolation
