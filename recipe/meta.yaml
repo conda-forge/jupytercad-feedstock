@@ -1,69 +1,178 @@
-{% set name = "jupytercad" %}
-{% set version = "0.3.3" %}
+{% set name = "jupytercad-packages" %}
+{% set version = "1.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 2dd55491d06e988b910cb5433d4c4c7080c8a9e8e2778aa4d7e86db6ae19c63f
+  - url: https://pypi.io/packages/source/j/jupytercad_core/jupytercad_core-{{ version }}.tar.gz
+    sha256: d8fa5b4bebfbecae7f9e16e01ff39ae07324516ed1cad6357c357cabfc570d02
+    folder: jupytercad_core
+  - url: https://pypi.io/packages/source/j/jupytercad_lab/jupytercad_lab-{{ version }}.tar.gz
+    sha256: 385882a2ade248dbcd79fe870d90f90cf0d3e3d75761446ff44f528999323612
+    folder: jupytercad_lab
+  - url: https://pypi.io/packages/source/j/jupytercad_app/jupytercad_app-{{ version }}.tar.gz
+    sha256: bfc98439ad4474f6f2c6100df5f9bd03a0af858adfd79538b55dde40152b163b
+    folder: jupytercad_app
+  - url: https://pypi.io/packages/source/j/jupytercad/jupytercad-{{ version }}.tar.gz
+    sha256: 4938583bde5a304569970301a04af11c6221d5364543a38ffde4329307a45e66
+    folder: jupytercad
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
   number: 0
-  entry_points:
-    - jupyter-cad = jupytercad.cadapp:main
 
-requirements:
-  host:
-    - python >=3.7
-    - pip
-    - hatchling >=1.4.0
-    - hatch-nodejs-version
-    - hatch-jupyter-builder
-    - datamodel-code-generator
-    - jupyterlab >=4,<5
-  run:
-    - python >=3.7
-    - jupyter_server >=2.0.6
-    - jupyterlab >=4,<5
-    - jupyter-collaboration >=1.0.0,<2
-    - ypywidgets >=0.4.1,<0.5.0
-    - yjs-widgets >=0.3.4,<0.4
-    - comm >=0.1.2,<0.2.0
-    - pydantic
-    - freecad
 
-test:
-  imports:
-    - jupytercad
-  requires:
-    - pip
-  commands:
-    - pip check
-    - jupyter cad --version
-    # jupyter_server server extension
-    - jupyter server extension list  # [unix]
-    - jupyter server extension list 1>server_extensions 2>&1  # [unix]
-    - cat server_extensions | grep "jupytercad.*OK"  # [unix]
-    # labextensions
-    - jupyter labextension list  # [unix]
-    - jupyter labextension list 1>labextensions 2>&1  # [unix]
-    - cat labextensions | grep "@jupytercad/jupytercad-extension.*OK"  # [unix]
+outputs:
+  - name: jupytercad_core
+    version: {{ version }}
+    build:
+      noarch: python
+      script: |
+        cd jupytercad_core
+        python -m pip install . -vv --no-deps --no-build-isolation --ignore-installed --no-index
+    requirements:
+      host:
+        - pip
+        - python >=3.8
+        - hatchling
+        - yarn
+        - jupyterlab >=4,<5
+        - hatch-jupyter-builder
+        - hatch-nodejs-version >=0.3.2
+      run:
+        - python >=3
+        - jupyter_server >=2.0.6,<3
+        - jupyter_ydoc >=1.1,<2
+        - y-py >=0.6,<0.7
+        - jupyter-collaboration >=1,<2
+    test:
+      imports:
+        - jupytercad_core
+      commands:
+        - pip check
+        - test -f ${PREFIX}/share/jupyter/labextensions/@jupytercad/jupytercad-core/package.json                            # [unix]
+        - if not exist %PREFIX%\\share\\jupyter\\labextensions\\@jupytercad/jupytercad-core\\package.json (exit 1)          # [win]
+      requires:
+        - pip
+
+  - name: jupytercad_lab
+    version: {{ version }}
+    build:
+      noarch: python
+      script: |
+        cd jupytercad_lab
+        python -m pip install . -vv --no-deps --no-build-isolation --ignore-installed --no-index
+    requirements:
+      host:
+        - pip
+        - python >=3.8
+        - hatchling
+        - yarn
+        - jupyterlab >=4,<5
+        - hatch-jupyter-builder
+        - hatch-nodejs-version >=0.3.2
+      run:
+        - python >=3.8
+        - jupyter_server> =2.0.1,<3
+        - jupyter_ydoc >=1.1,<2
+        - y-py >=0.6,<0.7
+        - jupyter-collaboration >=1,<2
+        - ypywidgets >=0.4.1,<0.5
+        - yjs-widgets >=0.3.4,<0.4
+        - comm >=0.1.2,<0.2
+        - pydantic >=2,<3
+        - jupytercad_core
+        - jupyterlab >=4,<5
+      run_constrained:
+        - jupytercad_core ={{ version }}
+    test:
+      imports:
+        - jupytercad_lab.notebook.cad_document
+      commands:
+        - pip check
+        - test -f ${PREFIX}/share/jupyter/labextensions/@jupytercad/jupytercad-lab/package.json                            # [unix]
+        - if not exist %PREFIX%\\share\\jupyter\\labextensions\\@jupytercad/jupytercad-lab\\package.json (exit 1)          # [win]
+      requires:
+        - pip
+
+  - name: jupytercad_app
+    version: {{ version }}
+    build:
+      noarch: python
+      script: |
+        cd jupytercad_app
+        python -m pip install . -vv --no-deps --no-build-isolation --ignore-installed --no-index
+      entry_points:
+        - jupyter-cad = jupytercad_app.cadapp:main
+    requirements:
+      host:
+        - pip
+        - python >=3.8
+        - hatchling
+        - yarn
+        - jupyterlab >=4,<5
+        - hatch-jupyter-builder
+        - hatch-nodejs-version >=0.3.2
+      run:
+        - python >=3.8
+        - jupyter_server >=2.0.1,<3
+        - jupytercad_core
+        - jupytercad_lab
+      run_constrained:
+        - jupyterlab >=4,<5
+        - jupytercad_lab ={{ version }}
+        - jupytercad_core ={{ version }}
+    test:
+      imports:
+        - jupytercad_app.cadapp
+      commands:
+        - jupyter cad --version
+        - pip check
+      requires:
+        - pip
+
+  - name: jupytercad
+    version: {{ version }}
+    build:
+      noarch: python
+      script: |
+        cd jupytercad
+        python -m pip install . -vv --no-deps --no-build-isolation --ignore-installed --no-index
+    requirements:
+      host:
+        - pip
+        - python >=3.8
+        - hatchling
+      run:
+        - python >=3.8
+        - jupytercad_core
+        - jupytercad_lab
+        - jupytercad_app
+      run_constrained:
+        - jupytercad_core ={{ version }}
+        - jupytercad_lab ={{ version }}
+        - jupytercad_app ={{ version }}
+    test:
+      imports:
+        - jupytercad
+      commands:
+        - pip check
+      requires:
+        - pip
 
 about:
-  home: https://github.com/QuantStack/jupytercad
+  home: https://github.com/jupytercad/jupytercad
   summary: A JupyterLab extension for 3D geometry modeling
   description: |
     JupyterCAD is a JupyterLab extension for 3D geometry modeling with collaborative editing support. It is designed to allow multiple people to work on the same file at the same time, and to facilitate discussion and collaboration around the 3D shapes being created.
     JupyterCAD has support for FreeCAD files, which makes it easy to import and export models from FreeCAD. It also has a range of features for creating and manipulating 3D shapes, including a variety of primitives, transformations, and Boolean operations.
   license: BSD-3-Clause
   license_family: BSD
-  license_file: LICENSE
+  license_file: jupytercad/LICENSE
   doc_url: https://jupytercad.readthedocs.io/en/latest
-  dev_url: https://github.com/QuantStack/jupytercad
+  dev_url: https://github.com/jupytercad/jupytercad
 
 extra:
   recipe-maintainers:
