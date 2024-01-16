@@ -33,12 +33,13 @@ outputs:
         python -m pip install . -vv --no-deps --no-build-isolation
     requirements:
       host:
+        - pip
         - python >=3.8
         - hatchling
         - yarn
         - jupyterlab >=4,<5
+        - hatch-jupyter-builder
         - hatch-nodejs-version >=0.3.2
-        - pip
       run:
         - python >=3.8
         - jupyter_server >=2.0.6,<3
@@ -63,12 +64,13 @@ outputs:
         python -m pip install . -vv --no-deps --no-build-isolation
     requirements:
       host:
+        - pip
         - python >=3.8
         - hatchling
         - yarn
         - jupyterlab >=4,<5
+        - hatch-jupyter-builder
         - hatch-nodejs-version >=0.3.2
-        - pip
       run:
         - python >=3.8
         - jupyter_server> =2.0.1,<3
@@ -103,9 +105,13 @@ outputs:
       - jupyter-cad = jupytercad_app.cadapp:main
     requirements:
       host:
+        - pip
         - python >=3.8
         - hatchling
-        - pip
+        - yarn
+        - jupyterlab >=4,<5
+        - hatch-jupyter-builder
+        - hatch-nodejs-version >=0.3.2
       run:
         - python >=3.8
         - jupyter_server >=2.0.1,<3
