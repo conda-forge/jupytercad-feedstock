@@ -1,15 +1,15 @@
-About jupytercad-feedstock
-==========================
+About jupytercad-packages-feedstock
+===================================
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/jupytercad-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/QuantStack/jupytercad
+Home: https://github.com/jupytercad/jupytercad
 
 Package license: BSD-3-Clause
 
 Summary: A JupyterLab extension for 3D geometry modeling
 
-Development: https://github.com/QuantStack/jupytercad
+Development: https://github.com/jupytercad/jupytercad
 
 Documentation: https://jupytercad.readthedocs.io/en/latest
 
@@ -36,27 +36,30 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-jupytercad-green.svg)](https://anaconda.org/conda-forge/jupytercad) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/jupytercad.svg)](https://anaconda.org/conda-forge/jupytercad) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/jupytercad.svg)](https://anaconda.org/conda-forge/jupytercad) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/jupytercad.svg)](https://anaconda.org/conda-forge/jupytercad) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-jupytercad_app-green.svg)](https://anaconda.org/conda-forge/jupytercad_app) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/jupytercad_app.svg)](https://anaconda.org/conda-forge/jupytercad_app) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/jupytercad_app.svg)](https://anaconda.org/conda-forge/jupytercad_app) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/jupytercad_app.svg)](https://anaconda.org/conda-forge/jupytercad_app) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-jupytercad_core-green.svg)](https://anaconda.org/conda-forge/jupytercad_core) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/jupytercad_core.svg)](https://anaconda.org/conda-forge/jupytercad_core) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/jupytercad_core.svg)](https://anaconda.org/conda-forge/jupytercad_core) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/jupytercad_core.svg)](https://anaconda.org/conda-forge/jupytercad_core) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-jupytercad_lab-green.svg)](https://anaconda.org/conda-forge/jupytercad_lab) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/jupytercad_lab.svg)](https://anaconda.org/conda-forge/jupytercad_lab) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/jupytercad_lab.svg)](https://anaconda.org/conda-forge/jupytercad_lab) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/jupytercad_lab.svg)](https://anaconda.org/conda-forge/jupytercad_lab) |
 
-Installing jupytercad
-=====================
+Installing jupytercad-packages
+==============================
 
-Installing `jupytercad` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `jupytercad-packages` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `jupytercad` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `jupytercad, jupytercad_app, jupytercad_core, jupytercad_lab` can be installed with `conda`:
 
 ```
-conda install jupytercad
+conda install jupytercad jupytercad_app jupytercad_core jupytercad_lab
 ```
 
 or with `mamba`:
 
 ```
-mamba install jupytercad
+mamba install jupytercad jupytercad_app jupytercad_core jupytercad_lab
 ```
 
 It is possible to list all of the versions of `jupytercad` available on your platform with `conda`:
@@ -126,17 +129,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating jupytercad-feedstock
-=============================
+Updating jupytercad-packages-feedstock
+======================================
 
-If you would like to improve the jupytercad recipe or build a new
+If you would like to improve the jupytercad-packages recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/jupytercad-feedstock are
+Note that all branches in the conda-forge/jupytercad-packages-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
