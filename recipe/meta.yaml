@@ -6,22 +6,22 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://pypi.io/packages/source/j/jupytercad_core/jupytercad_core-{{ version }}.tar.gz
+  - url: https://pypi.org/packages/source/j/jupytercad_core/jupytercad_core-{{ version }}.tar.gz
     sha256: 6efe690b6cd26bfaccb99fca8df83cd69b78d1fe4857f527aa98c8fea5e303d3
     folder: jupytercad_core
-  - url: https://pypi.io/packages/source/j/jupytercad_lab/jupytercad_lab-{{ version }}.tar.gz
+  - url: https://pypi.org/packages/source/j/jupytercad_lab/jupytercad_lab-{{ version }}.tar.gz
     sha256: cf0fcf0144110badc0f89426bbc608186ae7fc6666f52fd23225002def336839
     folder: jupytercad_lab
-  - url: https://pypi.io/packages/source/j/jupytercad_app/jupytercad_app-{{ version }}.tar.gz
+  - url: https://pypi.org/packages/source/j/jupytercad_app/jupytercad_app-{{ version }}.tar.gz
     sha256: f710b6fab8f37ecceef4a3c166a625a132578b356d84c841df1adfb0aaa5c24a
     folder: jupytercad_app
-  - url: https://pypi.io/packages/source/j/jupytercad/jupytercad-{{ version }}.tar.gz
+  - url: https://pypi.org/packages/source/j/jupytercad/jupytercad-{{ version }}.tar.gz
     sha256: 51eb2748cb0e64740dbab8679afd1f1056a6a72fbc042f9b677ce62651bbd88a
     folder: jupytercad
 
 build:
   noarch: python
-  number: 0
+  number: 1
 
 
 outputs:
@@ -35,14 +35,14 @@ outputs:
     requirements:
       host:
         - pip
-        - python >=3.8
+        - python {{ python_min }}
         - hatchling
         - yarn
         - jupyterlab >=4,<5
         - hatch-jupyter-builder
         - hatch-nodejs-version >=0.3.2
       run:
-        - python >=3
+        - python >={{ python_min }}
         - jupyter_server >=2.0.6,<3
         - jupyter_ydoc >=2,<4
         - pydantic >=2,<3
@@ -68,14 +68,14 @@ outputs:
     requirements:
       host:
         - pip
-        - python >=3.8
+        - python {{ python_min }}
         - hatchling
         - yarn
         - jupyterlab >=4,<5
         - hatch-jupyter-builder
         - hatch-nodejs-version >=0.3.2
       run:
-        - python >=3.8
+        - python >={{ python_min }}
         - jupyter_server> =2.0.6,<3
         - jupyter_ydoc >=2,<4
         - jupyter-collaboration >=3,<4
@@ -109,14 +109,14 @@ outputs:
     requirements:
       host:
         - pip
-        - python >=3.8
+        - python {{ python_min }}
         - hatchling
         - yarn
         - jupyterlab >=4,<5
         - hatch-jupyter-builder
         - hatch-nodejs-version >=0.3.2
       run:
-        - python >=3.8
+        - python >={{ python_min }}
         - jupyter_server >=2.0.6,<3
         - jupytercad_core
         - jupytercad_lab
@@ -143,10 +143,10 @@ outputs:
     requirements:
       host:
         - pip
-        - python >=3.8
+        - python {{ python_min }}
         - hatchling
       run:
-        - python >=3.8
+        - python >={{ python_min }}
         - jupytercad_core
         - jupytercad_lab
         - jupytercad_app
@@ -161,6 +161,7 @@ outputs:
         - pip check
       requires:
         - pip
+        - python {{ python_min }}
 
 about:
   home: https://github.com/jupytercad/jupytercad
