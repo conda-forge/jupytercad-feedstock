@@ -1,5 +1,5 @@
 {% set name = "jupytercad-packages" %}
-{% set version = "3.0.0" %}
+{% set version = "3.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,21 +7,21 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/j/jupytercad_core/jupytercad_core-{{ version }}.tar.gz
-    sha256: 6efe690b6cd26bfaccb99fca8df83cd69b78d1fe4857f527aa98c8fea5e303d3
+    sha256: f7defcd795837279fbec5969d7f27674640f563fbbc0a140dc44af0397a43ef2
     folder: jupytercad_core
   - url: https://pypi.org/packages/source/j/jupytercad_lab/jupytercad_lab-{{ version }}.tar.gz
-    sha256: cf0fcf0144110badc0f89426bbc608186ae7fc6666f52fd23225002def336839
+    sha256: a4484392fb5ca7aff81d3233c68dc559dee2094864fed034413339512f90b375
     folder: jupytercad_lab
   - url: https://pypi.org/packages/source/j/jupytercad_app/jupytercad_app-{{ version }}.tar.gz
-    sha256: f710b6fab8f37ecceef4a3c166a625a132578b356d84c841df1adfb0aaa5c24a
+    sha256: 3b9d36cfd504c5b35b94443a21842ec1651af900e8c898aa8f4c2335a59f27be
     folder: jupytercad_app
   - url: https://pypi.org/packages/source/j/jupytercad/jupytercad-{{ version }}.tar.gz
-    sha256: 51eb2748cb0e64740dbab8679afd1f1056a6a72fbc042f9b677ce62651bbd88a
+    sha256: 2ea07b5677294f61b7aaa66d7dc949345438db836429524f9e7bb768208dbf41
     folder: jupytercad
 
 build:
   noarch: python
-  number: 1
+  number: 0
 
 
 outputs:
