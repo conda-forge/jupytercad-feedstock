@@ -113,6 +113,7 @@ outputs:
       run:
         - python >={{ python_min }}
         - jupyter_server >=2.0.6,<3
+        - jupyterlab_server
         - jupytercad_core
         - jupytercad_lab
       run_constrained:
