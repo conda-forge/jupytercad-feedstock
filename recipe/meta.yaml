@@ -146,7 +146,6 @@ outputs:
       run_constrained:
         - jupytercad_core ={{ version }}
         - jupytercad_lab ={{ version }}
-        - jupytercad_app ={{ version }}
     test:
       imports:
         - jupytercad
