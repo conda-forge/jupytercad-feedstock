@@ -15,7 +15,7 @@ source:
   - url: https://pypi.org/packages/source/j/jupytercad_app/jupytercad_app-{{ version }}.tar.gz
     sha256: 5eb74d8fc974300ffcace10b05da6f54d22c410222c46f84a4ab8aa701e43d80
     folder: jupytercad_app
-  - url: https://pypi.org/packages/source/j/jupytercad_app/jupytercad_lite-{{ version }}.tar.gz
+  - url: https://pypi.org/packages/source/j/jupytercad_lite/jupytercad_lite-{{ version }}.tar.gz
     sha256: 5fb58c83ce19187dbe7418f977aa455c53df8c1646393418b0a1c9ee49d762e7
     folder: jupytercad_lite
   - url: https://pypi.org/packages/source/j/jupytercad/jupytercad-{{ version }}.tar.gz
