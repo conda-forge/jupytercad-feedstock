@@ -1,5 +1,6 @@
 {% set name = "jupytercad-packages" %}
-{% set version = "3.0.1" %}
+{% set version = "3.1.0" %}
+{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
@@ -7,16 +8,19 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/j/jupytercad_core/jupytercad_core-{{ version }}.tar.gz
-    sha256: f7defcd795837279fbec5969d7f27674640f563fbbc0a140dc44af0397a43ef2
+    sha256: eff0cead4b1a3017191b113ca93b2cf1756b90d6c6c896c2257f5dcecca2343f
     folder: jupytercad_core
   - url: https://pypi.org/packages/source/j/jupytercad_lab/jupytercad_lab-{{ version }}.tar.gz
-    sha256: a4484392fb5ca7aff81d3233c68dc559dee2094864fed034413339512f90b375
+    sha256: cc5475d6f2f017e06a3644b9d5b5ed9f7e594abf5181efd7db05351a3956894a
     folder: jupytercad_lab
   - url: https://pypi.org/packages/source/j/jupytercad_app/jupytercad_app-{{ version }}.tar.gz
-    sha256: 3b9d36cfd504c5b35b94443a21842ec1651af900e8c898aa8f4c2335a59f27be
+    sha256: 5eb74d8fc974300ffcace10b05da6f54d22c410222c46f84a4ab8aa701e43d80
     folder: jupytercad_app
+  - url: https://pypi.org/packages/source/j/jupytercad_lite/jupytercad_lite-{{ version }}.tar.gz
+    sha256: 5fb58c83ce19187dbe7418f977aa455c53df8c1646393418b0a1c9ee49d762e7
+    folder: jupytercad_lite
   - url: https://pypi.org/packages/source/j/jupytercad/jupytercad-{{ version }}.tar.gz
-    sha256: 2ea07b5677294f61b7aaa66d7dc949345438db836429524f9e7bb768208dbf41
+    sha256: bd3dffc6a4e99e111fcdc3c940e09a20965ed68851bf7e8361559373a85c4b44
     folder: jupytercad
 
 build:
@@ -43,14 +47,9 @@ outputs:
         - hatch-nodejs-version >=0.3.2
       run:
         - python >={{ python_min }}
-        - jupyter_server >=2.0.6,<3
         - jupyter_ydoc >=2,<4
         - pydantic >=2,<3
-        - y-py >=0.6,<0.7
-        - jupyter-collaboration >=3,<4
     test:
-      imports:
-        - jupytercad_core
       commands:
         - pip check
         - test -f ${PREFIX}/share/jupyter/labextensions/@jupytercad/jupytercad-core/package.json                            # [unix]
@@ -76,15 +75,11 @@ outputs:
         - hatch-nodejs-version >=0.3.2
       run:
         - python >={{ python_min }}
-        - jupyter_server> =2.0.6,<3
-        - jupyter_ydoc >=2,<4
-        - jupyter-collaboration >=3,<4
         - ypywidgets >=0.9,<0.10
-        - yjs-widgets >=0.3.7,<0.4
+        - yjs-widgets >=0.4,<0.5
         - comm >=0.1.2,<0.2
         - pydantic >=2,<3
         - jupytercad_core
-        - jupyterlab >=4,<5
       run_constrained:
         - jupytercad_core ={{ version }}
     test:
@@ -118,10 +113,10 @@ outputs:
       run:
         - python >={{ python_min }}
         - jupyter_server >=2.0.6,<3
+        - jupyterlab_server
         - jupytercad_core
         - jupytercad_lab
       run_constrained:
-        - jupyterlab >=4,<5
         - jupytercad_lab ={{ version }}
         - jupytercad_core ={{ version }}
     test:
@@ -132,6 +127,35 @@ outputs:
         - pip check
       requires:
         - pip
+
+  - name: jupytercad_lite
+    version: {{ version }}
+    build:
+      noarch: python
+      script: |
+        cd jupytercad_lite
+        python -m pip install . -vv --no-deps --no-build-isolation --ignore-installed --no-index
+    requirements:
+      host:
+        - pip
+        - python {{ python_min }}
+        - hatchling
+      run:
+        - python >={{ python_min }}
+        - jupytercad_core
+        - jupytercad_lab
+        - my-jupyter-shared-drive
+      run_constrained:
+        - jupytercad_core ={{ version }}
+        - jupytercad_lab ={{ version }}
+    test:
+      imports:
+        - jupytercad
+      commands:
+        - pip check
+      requires:
+        - pip
+        - python {{ python_min }}
 
   - name: jupytercad
     version: {{ version }}
@@ -150,6 +174,8 @@ outputs:
         - jupytercad_core
         - jupytercad_lab
         - jupytercad_app
+        - jupyter-collaboration >=3,<4
+        - jupyterlab >=4.3,<5
       run_constrained:
         - jupytercad_core ={{ version }}
         - jupytercad_lab ={{ version }}
