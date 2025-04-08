@@ -1,5 +1,5 @@
 {% set name = "jupytercad-packages" %}
-{% set version = "3.1.1" %}
+{% set version = "3.1.2" %}
 {% set python_min = "3.10" %}
 
 package:
@@ -8,19 +8,19 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/j/jupytercad_core/jupytercad_core-{{ version }}.tar.gz
-    sha256: 85be1e51bc09de45540038345874c7ce539a0603cd305d16ca70128aa59ad0f8
+    sha256: e8b94490496c7eb9eb3f5d51a68c49733ddc19d259fb039da575d13228ee55df
     folder: jupytercad_core
   - url: https://pypi.org/packages/source/j/jupytercad_lab/jupytercad_lab-{{ version }}.tar.gz
-    sha256: 5dbadacdcd061e904203ef80a8645404c1f85921cc1fd9b2616a8c5db313ed33
+    sha256: 93907d8b5d9a0de3ec48d4727391421023e6a976d8f482d7b18131580b8da152
     folder: jupytercad_lab
   - url: https://pypi.org/packages/source/j/jupytercad_app/jupytercad_app-{{ version }}.tar.gz
-    sha256: 86270ed20d95bda63a5988ecec775d66b5f370d9535e3747c70b54a2277a20e7
+    sha256: fe3fb9528034aa5d7ac3d713fec978aa5e664561ec70733871070ada2d86ef5e
     folder: jupytercad_app
   - url: https://pypi.org/packages/source/j/jupytercad_lite/jupytercad_lite-{{ version }}.tar.gz
-    sha256: 787b56f6c403b99acb498e7f41f9f635d4a4c44bd2ecfa644dfefab4110a2944
+    sha256: 309fca125667d347604521b3d696b4ffd89c6259754afee7c3686984f4e80ab8
     folder: jupytercad_lite
   - url: https://pypi.org/packages/source/j/jupytercad/jupytercad-{{ version }}.tar.gz
-    sha256: fd9e242657d9d8cad6065b2971ed4a10549589a400491cafd07a931f2c003388
+    sha256: cfa1a5882385a078e2c875680b3a7acb3da0e1010dbd63c14a157c52a7ffed29
     folder: jupytercad
 
 build:
@@ -175,6 +175,9 @@ outputs:
         - jupytercad_lab
         - jupytercad_app
         - jupyter-collaboration >=3,<4
+        - jupyter-collaboration-ui >=1,<2
+        - jupyter-docprovider >=1,<2
+        - jupyter_server_ydoc >=1,<2
         - jupyterlab >=4.3,<5
       run_constrained:
         - jupytercad_core ={{ version }}
