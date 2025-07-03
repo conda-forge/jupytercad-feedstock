@@ -29,7 +29,7 @@ build:
 
 
 outputs:
-  - name: jupytercad_core
+  - name: jupytercad-core
     version: {{ version }}
     build:
       noarch: python
@@ -57,7 +57,7 @@ outputs:
       requires:
         - pip
 
-  - name: jupytercad_lab
+  - name: jupytercad-lab
     version: {{ version }}
     build:
       noarch: python
@@ -79,9 +79,9 @@ outputs:
         - yjs-widgets >=0.4,<0.5
         - comm >=0.1.2,<0.2
         - pydantic >=2,<3
-        - jupytercad_core
+        - jupytercad-core
       run_constrained:
-        - jupytercad_core ={{ version }}
+        - jupytercad-core ={{ version }}
     test:
       imports:
         - jupytercad_lab.notebook.cad_document
@@ -92,7 +92,7 @@ outputs:
       requires:
         - pip
 
-  - name: jupytercad_app
+  - name: jupytercad-app
     version: {{ version }}
     build:
       noarch: python
@@ -114,11 +114,11 @@ outputs:
         - python >={{ python_min }}
         - jupyter_server >=2.0.6,<3
         - jupyterlab_server
-        - jupytercad_core
-        - jupytercad_lab
+        - jupytercad-core
+        - jupytercad-lab
       run_constrained:
-        - jupytercad_lab ={{ version }}
-        - jupytercad_core ={{ version }}
+        - jupytercad-lab ={{ version }}
+        - jupytercad-core ={{ version }}
     test:
       imports:
         - jupytercad_app.cadapp
@@ -128,7 +128,7 @@ outputs:
       requires:
         - pip
 
-  - name: jupytercad_lite
+  - name: jupytercad-lite
     version: {{ version }}
     build:
       noarch: python
@@ -142,12 +142,12 @@ outputs:
         - hatchling
       run:
         - python >={{ python_min }}
-        - jupytercad_core
-        - jupytercad_lab
+        - jupytercad-core
+        - jupytercad-lab
         - my-jupyter-shared-drive<0.2
       run_constrained:
-        - jupytercad_core ={{ version }}
-        - jupytercad_lab ={{ version }}
+        - jupytercad-core ={{ version }}
+        - jupytercad-lab ={{ version }}
     test:
       imports:
         - jupytercad
@@ -171,18 +171,18 @@ outputs:
         - hatchling
       run:
         - python >={{ python_min }}
-        - jupytercad_core
-        - jupytercad_lab
-        - jupytercad_app
+        - jupytercad-core
+        - jupytercad-lab
+        - jupytercad-app
         - jupyter-collaboration >=3,<4
         - jupyter-collaboration-ui >=1,<2
         - jupyter-docprovider >=1,<2
         - jupyter_server_ydoc >=1,<2
         - jupyterlab >=4.3,<5
       run_constrained:
-        - jupytercad_core ={{ version }}
-        - jupytercad_lab ={{ version }}
-        - jupytercad_app ={{ version }}
+        - jupytercad-core ={{ version }}
+        - jupytercad-lab ={{ version }}
+        - jupytercad-app ={{ version }}
     test:
       imports:
         - jupytercad
