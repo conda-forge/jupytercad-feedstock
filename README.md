@@ -36,10 +36,10 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-jupytercad-green.svg)](https://anaconda.org/conda-forge/jupytercad) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/jupytercad.svg)](https://anaconda.org/conda-forge/jupytercad) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/jupytercad.svg)](https://anaconda.org/conda-forge/jupytercad) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/jupytercad.svg)](https://anaconda.org/conda-forge/jupytercad) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-jupytercad__app-green.svg)](https://anaconda.org/conda-forge/jupytercad_app) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/jupytercad_app.svg)](https://anaconda.org/conda-forge/jupytercad_app) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/jupytercad_app.svg)](https://anaconda.org/conda-forge/jupytercad_app) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/jupytercad_app.svg)](https://anaconda.org/conda-forge/jupytercad_app) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-jupytercad__core-green.svg)](https://anaconda.org/conda-forge/jupytercad_core) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/jupytercad_core.svg)](https://anaconda.org/conda-forge/jupytercad_core) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/jupytercad_core.svg)](https://anaconda.org/conda-forge/jupytercad_core) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/jupytercad_core.svg)](https://anaconda.org/conda-forge/jupytercad_core) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-jupytercad__lab-green.svg)](https://anaconda.org/conda-forge/jupytercad_lab) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/jupytercad_lab.svg)](https://anaconda.org/conda-forge/jupytercad_lab) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/jupytercad_lab.svg)](https://anaconda.org/conda-forge/jupytercad_lab) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/jupytercad_lab.svg)](https://anaconda.org/conda-forge/jupytercad_lab) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-jupytercad__lite-green.svg)](https://anaconda.org/conda-forge/jupytercad_lite) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/jupytercad_lite.svg)](https://anaconda.org/conda-forge/jupytercad_lite) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/jupytercad_lite.svg)](https://anaconda.org/conda-forge/jupytercad_lite) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/jupytercad_lite.svg)](https://anaconda.org/conda-forge/jupytercad_lite) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-jupytercad--app-green.svg)](https://anaconda.org/conda-forge/jupytercad-app) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/jupytercad-app.svg)](https://anaconda.org/conda-forge/jupytercad-app) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/jupytercad-app.svg)](https://anaconda.org/conda-forge/jupytercad-app) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/jupytercad-app.svg)](https://anaconda.org/conda-forge/jupytercad-app) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-jupytercad--core-green.svg)](https://anaconda.org/conda-forge/jupytercad-core) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/jupytercad-core.svg)](https://anaconda.org/conda-forge/jupytercad-core) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/jupytercad-core.svg)](https://anaconda.org/conda-forge/jupytercad-core) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/jupytercad-core.svg)](https://anaconda.org/conda-forge/jupytercad-core) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-jupytercad--lab-green.svg)](https://anaconda.org/conda-forge/jupytercad-lab) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/jupytercad-lab.svg)](https://anaconda.org/conda-forge/jupytercad-lab) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/jupytercad-lab.svg)](https://anaconda.org/conda-forge/jupytercad-lab) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/jupytercad-lab.svg)](https://anaconda.org/conda-forge/jupytercad-lab) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-jupytercad--lite-green.svg)](https://anaconda.org/conda-forge/jupytercad-lite) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/jupytercad-lite.svg)](https://anaconda.org/conda-forge/jupytercad-lite) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/jupytercad-lite.svg)](https://anaconda.org/conda-forge/jupytercad-lite) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/jupytercad-lite.svg)](https://anaconda.org/conda-forge/jupytercad-lite) |
 
 Installing jupytercad-packages
 ==============================
@@ -51,16 +51,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `jupytercad, jupytercad_app, jupytercad_core, jupytercad_lab, jupytercad_lite` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `jupytercad, jupytercad-app, jupytercad-core, jupytercad-lab, jupytercad-lite` can be installed with `conda`:
 
 ```
-conda install jupytercad jupytercad_app jupytercad_core jupytercad_lab jupytercad_lite
+conda install jupytercad jupytercad-app jupytercad-core jupytercad-lab jupytercad-lite
 ```
 
 or with `mamba`:
 
 ```
-mamba install jupytercad jupytercad_app jupytercad_core jupytercad_lab jupytercad_lite
+mamba install jupytercad jupytercad-app jupytercad-core jupytercad-lab jupytercad-lite
 ```
 
 It is possible to list all of the versions of `jupytercad` available on your platform with `conda`:
