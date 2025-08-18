@@ -206,5 +206,6 @@ about:
 
 extra:
   recipe-maintainers:
+    - arjxn-py
     - martinRenou
     - trungleduc
