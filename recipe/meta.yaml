@@ -1,5 +1,5 @@
 {% set name = "jupytercad-packages" %}
-{% set version = "3.1.7" %}
+{% set version = "3.4.0" %}
 {% set python_min = "3.10" %}
 
 package:
@@ -8,19 +8,19 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/j/jupytercad_core/jupytercad_core-{{ version }}.tar.gz
-    sha256: e9eab1053178a76900bbb1ba72c48de5a9ce3e8e5c705404ae48a48fd9593858
+    sha256: 2f5a0cdc38e29ae9469ef3cfce921cb9bacab7e9cd7518fcd35a51af332fcde1
     folder: jupytercad_core
   - url: https://pypi.org/packages/source/j/jupytercad_lab/jupytercad_lab-{{ version }}.tar.gz
-    sha256: 73286d6eda21d22c9a93c32a2abfdb68fbcde7bfda7aeba7b87a272eb47c3874
+    sha256: 8fceba82310ce9387c19ee0153a0f8dd05e19e5d820828aff49f832c8c17c078
     folder: jupytercad_lab
   - url: https://pypi.org/packages/source/j/jupytercad_app/jupytercad_app-{{ version }}.tar.gz
-    sha256: 9d69d98af1f9f02bc8453a67382264e1561f49714271e487828dc5016e0f3d16
+    sha256: f3ecc8663caf526e6828c5e373245af9e1bbea690b375d9f4368d17baca9cecc
     folder: jupytercad_app
   - url: https://pypi.org/packages/source/j/jupytercad_lite/jupytercad_lite-{{ version }}.tar.gz
-    sha256: 2a0ddf79f35c12e16e878009977add7f85cf58480e47bc28bc9fdd2e63cac834
+    sha256: f22000ee45ae797c202adcfe1ced3eeb536d7ea2ad4434aae85aa1505d3df5a7
     folder: jupytercad_lite
   - url: https://pypi.org/packages/source/j/jupytercad/jupytercad-{{ version }}.tar.gz
-    sha256: da762a29acc4ff1cacca725503b44dff56911ccb6854d1f219193596f850e269
+    sha256: b387b3a71fb3cf2ecbec36839057fb53d8e1f5229ed1a2166f2f5d2c4f1485c0
     folder: jupytercad
 
 build:
@@ -144,7 +144,7 @@ outputs:
         - python >={{ python_min }}
         - jupytercad-core
         - jupytercad-lab
-        - my-jupyter-shared-drive<0.2
+        - my-jupyter-shared-drive>=0.2.2
       run_constrained:
         - jupytercad-core ={{ version }}
         - jupytercad-lab ={{ version }}
@@ -174,10 +174,10 @@ outputs:
         - jupytercad-core
         - jupytercad-lab
         - jupytercad-app
-        - jupyter-collaboration >=3,<4
-        - jupyter-collaboration-ui >=1,<2
-        - jupyter-docprovider >=1,<2
-        - jupyter_server_ydoc >=1,<2
+        - jupyter-collaboration >=4,<5
+        - jupyter-collaboration-ui >=2,<3
+        - jupyter-docprovider >=2,<3
+        - jupyter_server_ydoc >=2,<3
         - jupyterlab >=4.3,<5
       run_constrained:
         - jupytercad-core ={{ version }}
